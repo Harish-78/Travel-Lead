@@ -1,14 +1,15 @@
 import React, {useState} from 'react';
 import {View, Text, TextInput, TouchableOpacity} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import Tabs from '../screens/Tabs';
 
-const Register = ({navigation}) => {
-  const [myName, setName] = useState('');
-  const [password, setPassword] = useState('');
-  const [address, setaddress] = useState('');
-  const [mail, setmail] = useState('');
-  const [mobile, setmobile] = useState('');
 
+const Register = () => {
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.box}>
@@ -17,34 +18,26 @@ const Register = ({navigation}) => {
           style={styles.input}
           placeholder="Name"
           placeholderTextColor="#7d849b"
-          value={myName}
+          value={name}
           maxLength={10}
           onChangeText={text => setName(text)}
         />
         <TextInput
           style={styles.input}
-          placeholder="Address"
-          placeholderTextColor="#7d849b"
-          value={address}
-          maxLength={20}
-          onChangeText={text => setaddress(text)}
-        />
-        <TextInput
-          style={styles.input}
           placeholder="Email"
           placeholderTextColor="#7d849b"
-          value={mail}
+          value={email}
           maxLength={20}
-          onChangeText={text => setmail(text)}
+          onChangeText={text => setEmail(text)}
         />
         <TextInput
           style={styles.input}
           placeholder="Mobile No"
           placeholderTextColor="#7d849b"
-          value={mobile}
+          value={phone}
           keyboardType="numeric"
           maxLength={20}
-          onChangeText={text => setmobile(text)}
+          onChangeText={text => setPhone(text)}
         />
         <TextInput
           style={styles.input}
@@ -57,8 +50,8 @@ const Register = ({navigation}) => {
         />
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate(Tabs)}>
-          <Text style={styles.buttonText}>Sign up</Text>
+          onPress={()=>{navigation.navigate(Tabs)}}>
+                    <Text style={styles.buttonText}>Sign up</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -79,11 +72,9 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContents: 'center',
-    padding: 30,
+    padding: 50,
     width: '80%',
-    marginHorizontal: 30,
-    marginTop: 90,
-    marginBottom: 30,
+    margin:60,
     backgroundColor: '#fff',
     borderRadius: 50,
     shadowColor: '#000',

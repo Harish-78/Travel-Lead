@@ -1,32 +1,56 @@
-//import liraries
-import React from 'react';
-import {View, StyleSheet} from 'react-native';
-import {Searchbar} from 'react-native-paper';
+import { Image, View,StyleSheet } from 'react-native'
+import React, { Component } from 'react'
+import { Searchbar } from 'react-native-paper'
+export default class SearchScreen extends Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <Searchbar />
+        <Image 
+          source={require('../assets/svg/search.svg')}
+          resizeMode='contain'
+          style={{height:300,width:350}}
+          />
+      </View>
+    )
+  }
+}
 
-// create a component
-const SearchScreen = () => {
-  return (
-    <View style={styles.container}>
-      <Searchbar style={styles.searchbar} />
-    </View>
-  );
-};
-
-// define your styles
 const styles = StyleSheet.create({
-  container: {
+  container:{
     flex: 1,
-    backgroundColor: '#fff',
+    alignItems:'center',
+    backgroundColor:"#fff",
+    marginTop:10,
   },
-  searchbar: {
-    marginTop: 40,
-    marginVertical: 10,
-    shadowColor: '#171717',
-    shadowOffset: {width: -2, height: 4},
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
+  h1:{
+    color:'#0089d0',
+    fontSize:20,
+    fontWeight:'bold',
   },
-});
-
-//make this component available to the app
-export default SearchScreen;
+  h2:{
+    color:'#000',
+    fontSize:17,
+    position:'relative',
+    right:80,
+    margin:10,
+    marginLeft:50,
+    fontFamily:'seriff',
+  },
+  h3:{
+    color:'#000',
+    fontSize:19,
+    fontFamily:'cursive',
+  },
+  h4:{
+    color:'#2a9039',
+    fontSize:19,
+    margin:10,
+  },
+  h5:{
+    color:'#ad186a',
+    fontSize:25,
+    fontWeight:'bold',
+    marginTop:20,
+  },
+})

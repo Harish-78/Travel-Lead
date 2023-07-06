@@ -1,4 +1,3 @@
-import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -6,11 +5,39 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import Tabs from '../screens/Tabs';
+import React, { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
+// import { auth } from "../../firebase";
+// import { signInWithEmailAndPassword } from "firebase/auth";
+
 import Register from './register';
-const Login = ({navigation}) => {
-  const [Mail, Setmail] = useState(null);
-  const [Password, Setpassword] = useState(null);
+import Tabs from '../screens/Tabs';
+const Login = () => {
+  const [initializing, setInitializing] = useState(true);
+  const [email, Setmail] = useState(null);
+  const [password, Setpassword] = useState(null);
+  const navigation = useNavigation();
+//   const login = () => {
+//     signInWithEmailAndPassword(auth,email,password).then((userCredential) => {
+//        console.log("user credential", userCredential);
+//        const user = userCredential.user;
+//        console.log("user details", user);
+//     })
+// }
+// useEffect(() => {
+//   try {
+//     const unsubscribe = auth.onAuthStateChanged((authUser) => {
+//       if (authUser) {
+//         navigation.replace(Tabs);
+//       }
+//     });
+
+//     return unsubscribe;
+//   } catch (e) {
+//     console.log(e);
+//   }
+// }, []);
+
   return (
     <View style={styles.container}>
       <View style={styles.box}>
@@ -23,7 +50,7 @@ const Login = ({navigation}) => {
           placeholder="Email"
           placeholderTextColor="#7d849b"
           autoCapitalize="none"
-          value={Mail}
+          value={email}
           onChangeText={text => Setmail(text)}
         />
         <TextInput
@@ -32,13 +59,13 @@ const Login = ({navigation}) => {
           placeholder="Password"
           placeholderTextColor="#7d849b"
           autoCapitalize="none"
-          value={Password}
+          value={password}
           onChangeText={text => Setpassword(text)}
           secureTextEntry
         />
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate(Tabs)}>
+          onPress={()=>{navigation.navigate(Tabs)}}>
           <Text style={styles.buttontext}>Log In</Text>
         </TouchableOpacity>
       </View>
@@ -62,8 +89,7 @@ const styles = StyleSheet.create({
     padding: 30,
     width: '80%',
     marginHorizontal: 30,
-    marginTop: '60%',
-    marginBottom: 30,
+    marginTop: '40%',
     backgroundColor: '#fff',
     borderRadius: 50,
     shadowColor: '#000',
@@ -90,11 +116,12 @@ const styles = StyleSheet.create({
   },
   h3: {
     fontWeight: 'bold',
-    margin: 10,
+    marginTop: 70,
     color: '#000',
   },
   h4: {
     color: '#00bfff',
+    margin:10,
   },
   input: {
     color: '#000',
@@ -116,7 +143,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 40,
     backgroundColor: '#2a9039',
     borderRadius: 25,
-    marginTop: 60,
+    marginTop: 40,
   },
 });
 
